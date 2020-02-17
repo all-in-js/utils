@@ -5,7 +5,7 @@
 ## Install
 
 ```
-npm i @eryue/utils
+npm i @iuv-tools/utils
 ```
 
 ## Example
@@ -16,7 +16,7 @@ npm i @eryue/utils
 ```js
 // 有文件更改则提交更改
 
-const { git } = require('@eryue/utils');
+const { git } = require('@iuv-tools/utils');
 
 const { clean } = git.hasChanges;
 
@@ -27,14 +27,14 @@ if (!clean) {
 
 * vue-cli风格的logger
 ```js
-const { log } = require('@eryue/utils');
+const { log } = require('@iuv-tools/utils');
 
 log.info('msg', 'tag');
 ```
 
 * 命令行spinner
 ```js
-const { spinner } = require('@eryue/utils');
+const { spinner } = require('@iuv-tools/utils');
 
 spinner.step('start...');
 // do sth
@@ -43,14 +43,14 @@ spinner.success('success');
 
 * npm操作
 ```js
-const { npm } = require('@eryue/utils');
+const { npm } = require('@iuv-tools/utils');
 
-const pkgTags = npm.tag.list('@eryue/utils');
+const pkgTags = npm.tag.list('@iuv-tools/utils');
 ```
 
 * 钉钉群消息提醒
 ```js
-const { DDWebhook } = require('@eryue/utils');
+const { DDWebhook } = require('@iuv-tools/utils');
 
 const secret = 'srcret';
 const webhook = 'webhook';
@@ -64,7 +64,7 @@ new DDWebhook({
 
 * ast抽象语法树操作
 ```js
-const { astCtrl } = require('@eryue/utils');
+const { astCtrl } = require('@iuv-tools/utils');
 
 function visitorCreater(t) {
   // 

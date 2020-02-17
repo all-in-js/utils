@@ -5,7 +5,7 @@
 ## Install
 
 ```js
-npm i -g @eryue/release
+npm i -g @iuv-tools/release
 ```
 
 ## Example

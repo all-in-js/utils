@@ -1,4 +1,4 @@
-const { c, spinner, log, resolvePkg, getArgType, hasYarn } = require('@eryue/utils');
+const { c, spinner, log, resolvePkg, getArgType, hasYarn } = require('@iuv-tools/utils');
 const execa = require('execa');
 
 const { name, scripts = {} } = resolvePkg();

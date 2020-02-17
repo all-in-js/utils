@@ -5,7 +5,7 @@
 ## Install
 
 ```js
-npm i -g @eryue/changelog
+npm i -g @iuv-tools/changelog
 ```
 
 ## Example

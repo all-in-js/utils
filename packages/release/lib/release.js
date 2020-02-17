@@ -1,7 +1,7 @@
 const c = require('chalk');
 const bump = require('version-bump-prompt');
 const execa = require('execa');
-const { log, resolvePkg, git, npm, fetch } = require('@eryue/utils');
+const { log, resolvePkg, git, npm, fetch } = require('@iuv-tools/utils');
 const TasksRunner = require('./tasks');
 
 const { scripts: SCRIPTS, name: pkgName } = resolvePkg();
