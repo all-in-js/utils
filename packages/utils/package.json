@@ -1,6 +1,6 @@
 {
   "name": "@iuv-tools/utils",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0",
   "author": "famanoder <915905174@qq.com>",
   "license": "MIT",
   "dependencies": {
