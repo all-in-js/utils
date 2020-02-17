@@ -1,5 +1,5 @@
 {
-  "name": "iuv-tools",
+  "name": "eryue",
   "private": true,
   "workspaces": [
     "packages/*"

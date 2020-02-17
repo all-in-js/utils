@@ -1,6 +1,6 @@
 {
-  "name": "@iuv-tools/json-collection",
-  "version": "1.0.0-beta.1",
+  "name": "@eryue/json-collection",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "license": "MIT",
   "author": "famanoder <915905174@qq.com>",
