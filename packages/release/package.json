@@ -1,0 +1,19 @@
+{
+  "name": "@iuv-tools/release",
+  "version": "1.0.0",
+  "description": "script for release package",
+  "keywords": [
+    "release"
+  ],
+  "bin": {
+    "release": "bin/release-cli.js"
+  },
+  "author": "famanoder <915905174@qq.com>",
+  "license": "MIT",
+  "main": "lib/release.js",
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "version-bump-prompt": "5.0.4",
+    "yargs-parser": "^16.1.0"
+  }
+}

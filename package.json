@@ -1,0 +1,12 @@
+{
+  "name": "iuv-tools",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.18.4"
+  },
+  "npmClient": "yarn",
+  "useWorkspaces": true
+}

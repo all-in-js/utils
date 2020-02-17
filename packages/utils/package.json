@@ -1,0 +1,19 @@
+{
+  "name": "@iuv-tools/utils",
+  "version": "1.0.0",
+  "author": "famanoder <915905174@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/generator": "^7.7.7",
+    "@babel/parser": "^7.7.7",
+    "@babel/traverse": "^7.7.4",
+    "@babel/types": "^7.7.4",
+    "archiver": "^3.1.1",
+    "chalk": "^3.0.0",
+    "execa": "^3.4.0",
+    "fs-extra": "^8.1.0",
+    "node-fetch": "^2.6.0",
+    "normalize-path": "^3.0.0",
+    "ora": "^4.0.2"
+  }
+}

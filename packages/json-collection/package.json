@@ -1,0 +1,12 @@
+{
+  "name": "@iuv-tools/json-collection",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "author": "famanoder <915905174@qq.com>",
+  "dependencies": {
+    "bfj": "^7.0.2",
+    "lodash.clonedeep": "^4.5.0",
+    "uuid": "^3.3.3"
+  }
+}
