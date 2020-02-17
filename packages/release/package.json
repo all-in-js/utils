@@ -1,6 +1,6 @@
 {
   "name": "@iuv-tools/release",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "description": "script for release package",
   "keywords": [
     "release"
