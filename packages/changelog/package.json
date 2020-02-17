@@ -5,6 +5,9 @@
   "author": "famanoder <915905174@qq.com>",
   "license": "MIT",
   "main": "lib/changelog.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "changelog": "bin/changelog-cli.js"
   },

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "lib/index.js",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "famanoder <915905174@qq.com>",
   "dependencies": {
     "bfj": "^7.0.2",

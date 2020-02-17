@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "author": "famanoder <915905174@qq.com>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@babel/generator": "^7.7.7",
     "@babel/parser": "^7.7.7",
