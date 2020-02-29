@@ -1,6 +1,6 @@
 {
   "name": "@iuv-tools/changelog",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "script for package's CHANGELOG.md",
   "author": "famanoder <915905174@qq.com>",
   "license": "MIT",
