@@ -6,7 +6,8 @@
   "license": "MIT",
   "main": "lib/changelog.js",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "bin": {
     "changelog": "bin/changelog-cli.js"

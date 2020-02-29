@@ -1,5 +1,6 @@
 const { execSync } = require('child_process');
 const normalizePath = require('normalize-path');
+const portfinder = require('portfinder');
 const path = require('path');
 const execa = require('execa');
 const os = require('os');
@@ -17,6 +18,38 @@ function getArgType(agr) {
   });
   obj.isFunction = ['asyncfunction', 'generatorfunction', 'function'].indexOf(type) >= 0;
   return obj;
+}
+
+/**
+ * 解析函数的参数名
+ * @param {string} fn 
+ * @example
+ * getArgsFromFunc($a, $b)
+ * => ['$a', '$b']
+ */
+function getArgsFromFunc(fn = '') { 
+  // reference from angular
+  const ARROW_ARG = /^([^\(]+?)=>/; 
+  const FN_ARGS = /^[^\(]*\(\s*([^\)]*)\)/m; 
+  const STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg; 
+  const fnText = fn.toString().replace(STRIP_COMMENTS, '');
+  let args = fnText.match(ARROW_ARG) || fnText.match(FN_ARGS) || []; 
+  if(args.length) {  
+    args = args[1].split(',').map(arg => arg.toString().trim());
+  }
+  return args; 
+}
+
+/**
+ * 对象转map
+ * @param {object} obj 
+ */
+function objToMap(obj) {
+  const map = new Map();
+  for (const k of Object.keys(obj)) {
+    map.set(k, obj[k]);
+  }
+  return map;
 }
 
 /**
@@ -46,13 +79,41 @@ const createExecCmd = (type, tip) => cmd => (agrs = []) => {
   return execa.sync(type, agrs);
 }
 
+/**
+ * 获取区间的随机整数
+ */
+function numRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+/**
+ * 生成可用是端口号
+ */
+async function getPort() {
+  let port = process.env.PORT;
+  if(!port) {
+    try{
+      port = await portfinder.getPortPromise();
+    }catch(e){
+      port = numRange(1024, 65535);
+    }
+  } 
+  
+  return port;
+  
+}
+
 const _util = {
   cwd, // 获取执行目录，根目录
   hasYarn,
+  numRange,
   resolvePkg,
   getArgType,
   getHomedir,
-  createExecCmd
+  createExecCmd,
+  getArgsFromFunc,
+  objToMap,
+  getPort
 }
 
 /**
@@ -81,14 +142,6 @@ _util.resolveCWD = function(...target) {
 }
 
 /**
- * 从当前目录resolve
- */
-_util.resolveDirname = function(...target) {
-  target.unshift(__dirname);
-  return _util.resolve.apply(path, target);
-}
-
-/**
  * 从home目录resolve
  */
 _util.resolveHome = function(...target) {
@@ -101,14 +154,6 @@ _util.resolveHome = function(...target) {
  */
 _util.joinCWD = function(...target) {
   target.unshift(cwd);
-  return _util.join.apply(path, target);
-}
-
-/**
- * 从当前目录join
- */
-_util.joinDirname = function(...target) {
-  target.unshift(__dirname);
   return _util.join.apply(path, target);
 }
 
