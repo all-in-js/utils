@@ -20,5 +20,8 @@
     "normalize-path": "^3.0.0",
     "ora": "^4.0.2",
     "portfinder": "^1.0.25"
+  },
+  "devDependencies": {
+    "@types/chalk": "^2.2.0"
   }
 }

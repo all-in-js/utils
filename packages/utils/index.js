@@ -20,5 +20,4 @@ const utils = {
   DDWebhook: require('./lib/dd-webhook')
 }
 
-
 module.exports = utils;
