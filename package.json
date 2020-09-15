@@ -5,9 +5,16 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@types/babel__generator": "^7.6.1",
+    "@types/babel__traverse": "^7.0.14",
     "@types/chalk": "^2.2.0",
+    "@types/execa": "^2.0.0",
+    "@types/fs-extra": "^9.0.1",
+    "@types/node": "^14.10.1",
+    "@types/normalize-path": "^3.0.0",
     "lerna": "^3.18.4"
   },
   "npmClient": "yarn",
-  "useWorkspaces": true
+  "useWorkspaces": true,
+  "dependencies": {}
 }

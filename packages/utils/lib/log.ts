@@ -53,8 +53,8 @@ function consolelog(...msg: Array<any>): void {
 
 export default log;
 // type tag? msg
-log.info('info...', 'lint');
-log.warn('warn...', 'lint');
-log.error('error...', 'lint');
-log.done('success...', 'init');
-log.success('s');
+// log.info('info...', 'lint');
+// log.warn('warn...', 'lint');
+// log.error('error...', 'lint');
+// log.done('success...', 'init');
+// log.success('s');
