@@ -2,7 +2,7 @@ import ora, { Options, Ora } from 'ora';
 
 // 不能和同步的child_process方法一起使用
 // 使用promise的execa和await
-export default class Spinner {
+export class Spinner {
   public _spinner: Ora;
   constructor(options: Options | string) {
     this._spinner = ora(options).start();
@@ -24,3 +24,5 @@ export default class Spinner {
     this._spinner.clear().fail(txt);
   }
 }
+
+export default Spinner;

@@ -57,7 +57,7 @@ interface MarkdownType extends MsgType {
 
 export type DDMessageType = TextType | LinkType | MarkdownType;
 
-export default class DDWebhook {
+export class DDWebhook {
   public secret: string;
   public webhook: string;
   public timestamp: number;
@@ -93,6 +93,8 @@ export default class DDWebhook {
     .then(res => res.json());
   }
 }
+
+export default DDWebhook;
 
 // const secret = 'SEC...';
 // const webhook = 'webhook...';

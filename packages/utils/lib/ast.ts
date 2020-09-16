@@ -31,7 +31,7 @@ export type VisitorCreaterType<T extends ExtraType> = (_babel: CbBabelType, extr
  * }, extra) => { code, extra }
  * @returns {object} 返回新生成的code和extra信息
  */
-function astCtrl<T extends ExtraType>(filepath: string, visitorCreater: VisitorCreaterType<T>) {
+export function astCtrl<T extends ExtraType>(filepath: string, visitorCreater: VisitorCreaterType<T>) {
   if (!fse.existsSync(filepath)) {
     log.error(`can not resolve the filepath: ${filepath}`, 'astCtrl');
     process.exit();

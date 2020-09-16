@@ -75,3 +75,5 @@ export const npmClient: NmpClientType = {
     }
   }
 }
+
+export default npmClient;

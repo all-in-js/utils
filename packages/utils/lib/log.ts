@@ -40,7 +40,7 @@ const createLogFn = (logType: Types) => {
   }
 }
 
-const log: LogType = {
+export const log: LogType = {
   [Types.info]: createLogFn(Types.info),
   [Types.warn]: createLogFn(Types.warn),
   [Types.error]: createLogFn(Types.error),

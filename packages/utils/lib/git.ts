@@ -82,7 +82,7 @@ export interface GitClientType {
   newTag: (name: string) => void;
 }
 
-const gitClient: GitClientType = {
+export const gitClient: GitClientType = {
   get config() {
     // git.config.local.add(key, value);
     const config: GitConfigType = {
