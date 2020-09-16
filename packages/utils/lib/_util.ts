@@ -33,14 +33,14 @@ type ObjType = {
   [key in string | number]: any;
 }
 
-interface UtilType {
-  cwd: string;
+export interface UtilType {
+  readonly cwd: string;
   hasYarn: () => boolean;
   numRange: (min: number, max: number) => number;
   resolvePkg: () => object;
   getArgType: (agrs: any) => AgrsTyped;
   getHomedir: () => string;
-  createExecCmd: (type: string, tip: string) => (cmd: string) => (agrs: string[]) => execa.ExecaSyncReturnValue | execa.ExecaSyncReturnValue<Buffer>;
+  createExecCmd: (type: string, tip: string) => (cmd?: string) => (agrs?: string[]) => execa.ExecaSyncReturnValue | execa.ExecaSyncReturnValue<Buffer>;
   getArgsFromFunc: (agrs: Function) => string[];
   objToMap: (agrs: ObjType) => Map<string | number, any>;
   getPort: () => Promise<number>;
@@ -128,7 +128,10 @@ export function hasYarn(): boolean {
 }
 
 // execCmd([cmd])([agruments]);
-export const createExecCmd = (type: string, tip: string) => (cmd: string) => (agrs: string[] = []) => {
+export const createExecCmd = (type: string, tip: string) => (cmd?: string) => (agrs?: string[]) => {
+  if (!agrs) {
+    agrs = [];
+  }
   const agrType = getArgType(agrs);
   if (!agrType.isArray) {
     log.error(tip, type);

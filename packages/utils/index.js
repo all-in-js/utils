@@ -15,7 +15,6 @@ const utils = {
   npm: require('./lib/npm'),
   log: require('./lib/log'),
   git: require('./lib/git'),
-  zip: require('./lib/zip'),
   spinner: require('./lib/spinner'),
   DDWebhook: require('./lib/dd-webhook')
 }

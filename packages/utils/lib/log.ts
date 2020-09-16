@@ -36,7 +36,7 @@ const createLogFn = (logType: Types) => {
       agrs.push(hasTag);
     }
     agrs.push(color ? c[<typeof Color>color](msg) : msg);  
-    consolelog.apply(consolelog, agrs);
+    console.log(...agrs);
   }
 }
 
@@ -46,10 +46,6 @@ const log: LogType = {
   [Types.error]: createLogFn(Types.error),
   [Types.done]: createLogFn(Types.done),
 };
-
-function consolelog(...msg: Array<any>): void {
-  console.log.apply(console, msg);
-}
 
 export default log;
 // type tag? msg

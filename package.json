@@ -11,6 +11,7 @@
     "@types/execa": "^2.0.0",
     "@types/fs-extra": "^9.0.1",
     "@types/node": "^14.10.1",
+    "@types/node-fetch": "^2.5.7",
     "@types/normalize-path": "^3.0.0",
     "lerna": "^3.18.4"
   },

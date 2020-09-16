@@ -1,41 +1,62 @@
-const { createExecCmd } = require('./_util');
+import { createExecCmd } from './_util';
 
 const AGRS_TIP = 'arguments of the command should be an array.';
 const execCmd = createExecCmd('npm', AGRS_TIP);
 
-const npmClient = {
-  get version() {
+type NpmConfig = {
+  registry: string;
+  username: string;
+  email: string;
+}
+type NpmTagType = {
+  list: (pkg: string) => string;
+  add: (pkg: string, version: string, tag: string) => string;
+  remove: (pkg: string, tag: string) => string;
+}
+
+export interface NmpClientType {
+  readonly version: string;
+  readonly config: NpmConfig;
+  readonly tag: NpmTagType;
+  setConfig: (key: string, value: string) => NpmConfig;
+  addDistTag: NpmTagType['add'];
+}
+
+export const npmClient: NmpClientType = {
+  get version(): string {
     const { stdout } = execCmd()(['-v']);
     return stdout;
   },
-  get config() {
-    let conf = {};
+  get config(): NpmConfig {
+    let conf = {
+      registry: '',
+      username: '',
+      email: ''
+    };
     try {
       const { stdout } = execCmd('config')(['list', '--json']);
       conf = JSON.parse(stdout);
     } catch(e) {
       console.log(e);
     }
-    const registry = conf.registry || '';
+    const registry = conf.registry;
     const uInfo = key => {
       return conf[`${ registry.replace(/^https?:/, '') + (registry.endsWith('/') ? '' : '/')}:${ key }`];
     }
-    return {
-      registry,
-      username: uInfo('username'),
-      email: uInfo('email')
-    }
+    conf.username = uInfo('username');
+    conf.email = uInfo('email');
+    return conf;
   },
-  setConfig(key, value) {
+  setConfig(key: string, value: string): NpmConfig {
     execCmd('config')(['set', `${ key }`, `${ value }`]);
     return this.config;
   },
   addDistTag() {
     return this.tag.add.apply(this, arguments);
   },
-  get tag() {
+  get tag(): NpmTagType {
     return {
-      list(pkg) {
+      list(pkg: string): string {
         const agrs = ['list'];
         if (pkg) {
           agrs.push(pkg);
@@ -43,16 +64,14 @@ const npmClient = {
         const { stdout } = execCmd('dist-tag')(agrs);
         return stdout;
       },
-      add(pkg, version, tag = 'latest') {
+      add(pkg: string, version: string, tag: string = 'latest'): string {
         const { stdout } = execCmd('dist-tag')(['add', `${ pkg }@${ version }`, tag]);
         return stdout;
       },
-      remove(pkg, tag = 'latest') {
+      remove(pkg: string, tag: string = 'latest'): string {
         const { stdout } = execCmd('dist-tag')(['rm', pkg, tag]);
         return stdout;
       }
     }
   }
 }
-
-module.exports = npmClient;
