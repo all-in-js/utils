@@ -4,7 +4,13 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "compile:utils": "rollup -c"
+  },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/babel__generator": "^7.6.1",
     "@types/babel__parser": "^7.1.1",
     "@types/babel__traverse": "^7.0.14",
@@ -14,7 +20,12 @@
     "@types/node": "^14.10.1",
     "@types/node-fetch": "^2.5.7",
     "@types/normalize-path": "^3.0.0",
-    "lerna": "^3.18.4"
+    "lerna": "^3.18.4",
+    "rollup": "^2.27.1",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "typescript": "^4.0.2"
   },
   "npmClient": "yarn",
   "useWorkspaces": true,

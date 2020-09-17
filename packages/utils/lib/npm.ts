@@ -40,8 +40,8 @@ export const npmClient: NmpClientType = {
       console.log(e);
     }
     const registry = conf.registry;
-    const uInfo = key => {
-      return conf[`${ registry.replace(/^https?:/, '') + (registry.endsWith('/') ? '' : '/')}:${ key }`];
+    const uInfo = (key: string) => {
+      return conf[<keyof NpmConfig>(`${ registry.replace(/^https?:/, '') + (registry.endsWith('/') ? '' : '/')}:${ key }`)];
     }
     conf.username = uInfo('username');
     conf.email = uInfo('email');
@@ -51,8 +51,8 @@ export const npmClient: NmpClientType = {
     execCmd('config')(['set', `${ key }`, `${ value }`]);
     return this.config;
   },
-  addDistTag() {
-    return this.tag.add.apply(this, arguments);
+  addDistTag(pkg: string, version: string, tag: string = 'latest'): string {
+    return this.tag.add(pkg, version, tag);
   },
   get tag(): NpmTagType {
     return {
