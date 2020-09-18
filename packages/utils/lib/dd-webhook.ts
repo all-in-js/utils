@@ -2,7 +2,7 @@ import C from 'crypto';
 import fetch from 'node-fetch';
 import log from './log';
 
-interface Option {
+export interface Option {
   secret: string;
   webhook: string;
 }
@@ -10,11 +10,11 @@ interface Option {
 /**
  * 基础消息类型
  */
-interface MsgType {
+export interface MsgType {
   msgtype: string;
 }
 
-type At = {
+export type At = {
   atMobiles: string[];
   isAtAll: boolean;
 }
@@ -22,10 +22,10 @@ type At = {
 /**
  * text类型
  */
-type TextContent = {
+export type TextContent = {
   content: string;
 }
-interface TextType extends MsgType {
+export interface TextType extends MsgType {
   text: TextContent, 
   at: At 
 }
@@ -33,24 +33,24 @@ interface TextType extends MsgType {
 /**
  * link类型
  */
-type LinkObj = {
+export type LinkObj = {
   text: string; 
   title: string; 
   messageUrl: string;
   picUrl?: string;
 }
-interface LinkType extends MsgType {
+export interface LinkType extends MsgType {
   link: LinkObj
 }
 
 /**
  * markdown类型
  */
-type Markdown = {
+export type Markdown = {
   title: string;
   text: string;
 }
-interface MarkdownType extends MsgType {
+export interface MarkdownType extends MsgType {
   markdown: Markdown;
   at: At;
 }

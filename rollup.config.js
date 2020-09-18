@@ -1,20 +1,19 @@
-import path from 'path'
-import ts from 'rollup-plugin-typescript2'
-import json from '@rollup/plugin-json'
+import path from 'path';
+import ts from 'rollup-plugin-typescript2';
+import json from '@rollup/plugin-json';
 
-const target = 'utils';
+const pkg = process.env.PACKAGE;
+
 const packagesDir = path.resolve(__dirname, 'packages')
-const packageDir = path.resolve(packagesDir, target)
-const name = path.basename(packageDir)
+const packageDir = path.resolve(packagesDir, pkg)
+const pkgJson = require(path.resolve(packageDir, 'package.json'))
 const resolve = p => path.resolve(packageDir, p)
-const pkg = require(resolve(`package.json`))
-const packageOptions = pkg.buildOptions || {}
 
 // ensure TS checks only once for each build
 let hasTSChecked = false
 const outputConfigs = {
   cjs: {
-    file: path.resolve(__dirname, `packages/utils/dist/utils.cjs.js`),
+    file: path.resolve(__dirname, `packages/${pkg}/dist/${pkg}.cjs.js`),
     format: `cjs`
   }
 }
@@ -31,15 +30,7 @@ function createConfig(format, output, plugins = []) {
     process.exit(1)
   }
 
-  output.sourcemap = true
   output.externalLiveBindings = false
-
-  const isBrowserESMBuild = /esm-browser/.test(format)
-  const isGlobalBuild = /global/.test(format)
-
-  if (isGlobalBuild) {
-    output.name = packageOptions.name
-  }
 
   const shouldEmitDeclarations = !hasTSChecked
 
@@ -48,9 +39,7 @@ function createConfig(format, output, plugins = []) {
     tsconfig: path.resolve(__dirname, 'tsconfig.json'),
     tsconfigOverride: {
       compilerOptions: {
-        sourceMap: output.sourcemap,
         declaration: shouldEmitDeclarations,
-        declarationMap: shouldEmitDeclarations
       },
       exclude: ['**/__tests__', 'test-dts']
     }
@@ -74,6 +63,7 @@ function createConfig(format, output, plugins = []) {
         ]
 
   return {
+    external: Object.keys(pkgJson.dependencies || {}),
     input: resolve(entryFile),
     // Global and Browser ESM builds inlines everything so that they can be
     // used alone.

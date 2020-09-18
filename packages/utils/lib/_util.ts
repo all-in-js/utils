@@ -7,7 +7,7 @@ import { execSync } from 'child_process';
 
 import log from './log';
 
-enum AgrsTypes {
+export enum AgrsTypes {
   isArray = 'isArray',
   isBoolean = 'isBoolean',
   isNumber = 'isNumber',
@@ -25,11 +25,11 @@ enum AgrsTypes {
   isFunction = 'isFunction'
 }
 
-type AgrsTyped = {
+export type AgrsTyped = {
   [key in AgrsTypes]: boolean;
 }
 
-type ObjType = {
+export type ObjType = {
   [key in string | number]: any;
 }
 

@@ -1,17 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
 
-  "apiReport": {
-    "enabled": true,
-    "reportFolder": "<projectFolder>/temp/"
+  "dtsRollup": {
+    "enabled": true
   },
 
   "docModel": {
-    "enabled": true
+    "enabled": false
   },
 
-  "dtsRollup": {
-    "enabled": true
+  "apiReport": {
+    "enabled": false
   },
 
   "tsdocMetadata": {
@@ -25,23 +24,17 @@
       }
     },
 
-    "extractorMessageReporting": {
+    "tsdocMessageReporting": {
       "default": {
-        "logLevel": "warning",
-        "addToApiReportFile": true
-      },
-
-      "ae-missing-release-tag": {
         "logLevel": "none"
       }
     },
 
-    "tsdocMessageReporting": {
+    "extractorMessageReporting": {
       "default": {
         "logLevel": "warning"
       },
-
-      "tsdoc-undefined-tag": {
+      "ae-missing-release-tag": {
         "logLevel": "none"
       }
     }

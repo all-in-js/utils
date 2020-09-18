@@ -6,14 +6,14 @@ import fse from 'fs-extra';
 import log from './log';
 import { getArgType } from './_util';
 
-interface CbBabelType  {
+export interface CbBabelType  {
   types: typeof types;
   traverse: typeof traverse;
   generate: typeof generate;
   parse: typeof parse;
 }
 
-interface ExtraType {
+export interface ExtraType {
   [key: string]: any
 }
 

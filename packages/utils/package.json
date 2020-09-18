@@ -7,12 +7,20 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "types": "./dist/packages/utils/index.d.ts",
+  "main": "./dist/utils.cjs.js",
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "@babel/generator": "^7.7.7",
     "@babel/parser": "^7.7.7",
     "@babel/traverse": "^7.7.4",
     "@babel/types": "^7.7.4",
+    "@types/babel__generator": "^7.6.1",
+    "@types/babel__traverse": "^7.0.14",
+    "@types/chalk": "^2.2.0",
+    "@types/fs-extra": "^9.0.1",
+    "@types/node": "^14.10.1",
+    "@types/node-fetch": "^2.5.7",
+    "@types/normalize-path": "^3.0.0",
     "archiver": "^3.1.1",
     "chalk": "^3.0.0",
     "execa": "^3.4.0",
@@ -21,8 +29,5 @@
     "normalize-path": "^3.0.0",
     "ora": "^4.0.2",
     "portfinder": "^1.0.25"
-  },
-  "devDependencies": {
-    "@types/chalk": "^2.2.0"
   }
 }

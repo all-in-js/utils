@@ -1,8 +1,7 @@
 
 import * as c from 'chalk';
-
-export * as fse from 'fs-extra';
-export * as fetch from 'node-fetch';
+import * as fse from 'fs-extra';
+import * as fetch from 'node-fetch';
 
 export * from './lib/_util';
 export * from './lib/ast';
@@ -12,5 +11,7 @@ export * from './lib/git';
 export * from './lib/spinner';
 export * from './lib/dd-webhook';
 export {
-  c
+  c,
+  fse,
+  fetch
 }

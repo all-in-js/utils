@@ -5,33 +5,33 @@ import { getArgType, createExecCmd } from './_util';
 const AGRS_TIP = 'arguments of the command should be an array.';
 const execCmd = createExecCmd('git', AGRS_TIP);
 
-type ExecaResType = execa.ExecaSyncReturnValue | execa.ExecaSyncReturnValue<Buffer>;
-interface GitConfigObjType {
+export type ExecaResType = execa.ExecaSyncReturnValue | execa.ExecaSyncReturnValue<Buffer>;
+export interface GitConfigObjType {
   add: (key: string, value: string) => ExecaResType;
   get: (key: string) => ExecaResType;
   remove: (key: string) => ExecaResType;
   readonly list: string[];
 }
-enum GitConfigLevelType {
+export enum GitConfigLevelType {
   local = 'local',
   global = 'global',
   system = 'system'
 }
-type GitConfigType = {
+export type GitConfigType = {
   [key in GitConfigLevelType]: GitConfigObjType;
 }
-type GitStatusType = {
+export type GitStatusType = {
   clean: boolean;
   files: string;
 }
-type GitBranchType = {
+export type GitBranchType = {
   has: (name: string) => boolean;
   add: (name: string, base: string) => void;
   switch: (name: string) => void;
   removeLocal: (name: string) => void;
   removeRemote: (name: string) => void;
 }
-type GitRemoteType = {
+export type GitRemoteType = {
   update: (name: string) => ExecaResType;
   add: (name: string, url: string, agrs: string[]) => ExecaResType;
   rename: (old: string, newname: string) => ExecaResType;
@@ -40,12 +40,12 @@ type GitRemoteType = {
   getUrl: (name: string) => ExecaResType;
   readonly list: string[][];
 }
-type GitTagAddOption = {
+export type GitTagAddOption = {
   name: string;
   msg: string;
   commit: string;
 }
-type GitTagType = {
+export type GitTagType = {
   readonly list: string[];
   filter: (pattern: string) => string[];
   add: (opts: string | GitTagAddOption) => GitTagType;

@@ -3,12 +3,12 @@ import { createExecCmd } from './_util';
 const AGRS_TIP = 'arguments of the command should be an array.';
 const execCmd = createExecCmd('npm', AGRS_TIP);
 
-type NpmConfig = {
+export type NpmConfig = {
   registry: string;
   username: string;
   email: string;
 }
-type NpmTagType = {
+export type NpmTagType = {
   list: (pkg: string) => string;
   add: (pkg: string, version: string, tag: string) => string;
   remove: (pkg: string, tag: string) => string;

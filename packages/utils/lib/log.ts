@@ -1,14 +1,14 @@
 import c, { BackgroundColor, Color } from 'chalk';
 
-enum Types {
+export enum Types {
   info = 'info',
   warn = 'warn',
   error = 'error',
   done = 'done'
 }
 
-type LogFnType = (msg: any, tag?: string) => void;
-interface LogType {
+export type LogFnType = (msg: any, tag?: string) => void;
+export interface LogType {
   [Types.info]: LogFnType;
   [Types.warn]: LogFnType;
   [Types.error]: LogFnType;
