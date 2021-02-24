@@ -1,4 +1,4 @@
-const { cwd: currDir, log, git, resolvePkg, resolve } = require('@iuv-tools/utils');
+const { cwd: currDir, log, git, resolvePkg, resolve } = require('@all-in-js/utils');
 const { writeFileSync, readFileSync, existsSync } = require('fs');
 const writePackage = require('write-pkg');
 const pkg = resolvePkg();

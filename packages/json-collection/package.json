@@ -1,13 +1,13 @@
 {
-  "name": "@iuv-tools/json-collection",
-  "version": "1.0.0-beta.2",
+  "name": "@all-in-js/json-collection",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "license": "MIT",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "author": "famanoder <915905174@qq.com>",
+  "author": "famanoder",
   "dependencies": {
     "bfj": "^7.0.2",
     "lodash.clonedeep": "^4.5.0",

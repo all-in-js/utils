@@ -1,6 +1,6 @@
 {
-  "name": "@iuv-tools/release",
-  "version": "1.0.0-beta.2",
+  "name": "@all-in-js/release",
+  "version": "1.0.0",
   "description": "script for release package",
   "publishConfig": {
     "access": "public",
@@ -12,7 +12,7 @@
   "bin": {
     "release": "bin/release-cli.js"
   },
-  "author": "famanoder <915905174@qq.com>",
+  "author": "famanoder",
   "license": "MIT",
   "main": "lib/release.js",
   "dependencies": {
