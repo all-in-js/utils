@@ -63,19 +63,19 @@ export function getArgType(agr: any) {
 
   const obj: AgrsTyped = {
     isArray: compareAgrsType(AgrsTypes.isArray, type),
-    isBoolean: compareAgrsType(AgrsTypes.isArray, type),
-    isNumber: compareAgrsType(AgrsTypes.isArray, type),
-    isObject: compareAgrsType(AgrsTypes.isArray, type),
-    isPromise: compareAgrsType(AgrsTypes.isArray, type),
-    isString: compareAgrsType(AgrsTypes.isArray, type),
-    isMap: compareAgrsType(AgrsTypes.isArray, type),
-    isRegExp: compareAgrsType(AgrsTypes.isArray, type),
-    isSet: compareAgrsType(AgrsTypes.isArray, type),
-    isWeakmap: compareAgrsType(AgrsTypes.isArray, type),
-    isWeakset: compareAgrsType(AgrsTypes.isArray, type),
-    isSymbol: compareAgrsType(AgrsTypes.isArray, type),
-    isNull: compareAgrsType(AgrsTypes.isArray, type),
-    isUndefined: compareAgrsType(AgrsTypes.isArray, type),
+    isBoolean: compareAgrsType(AgrsTypes.isBoolean, type),
+    isNumber: compareAgrsType(AgrsTypes.isNumber, type),
+    isObject: compareAgrsType(AgrsTypes.isObject, type),
+    isPromise: compareAgrsType(AgrsTypes.isPromise, type),
+    isString: compareAgrsType(AgrsTypes.isString, type),
+    isMap: compareAgrsType(AgrsTypes.isMap, type),
+    isRegExp: compareAgrsType(AgrsTypes.isRegExp, type),
+    isSet: compareAgrsType(AgrsTypes.isSet, type),
+    isWeakmap: compareAgrsType(AgrsTypes.isWeakmap, type),
+    isWeakset: compareAgrsType(AgrsTypes.isWeakset, type),
+    isSymbol: compareAgrsType(AgrsTypes.isSymbol, type),
+    isNull: compareAgrsType(AgrsTypes.isNull, type),
+    isUndefined: compareAgrsType(AgrsTypes.isUndefined, type),
     isFunction: ['asyncfunction', 'generatorfunction', 'function'].indexOf(type) >= 0
   };
   return obj;
@@ -88,7 +88,7 @@ export function getArgType(agr: any) {
  * getArgsFromFunc($a, $b)
  * => ['$a', '$b']
  */
-export function getArgsFromFunc(fn: Function): string[] { 
+export function getArgsFromFunc(fn: Function): string[] {
   // reference from angular
   const ARROW_ARG = /^([^\(]+?)=>/; 
   const FN_ARGS = /^[^\(]*\(\s*([^\)]*)\)/m; 

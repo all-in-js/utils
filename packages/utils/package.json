@@ -1,6 +1,6 @@
 {
   "name": "@all-in-js/utils",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "author": "famanoder",
   "license": "MIT",
   "publishConfig": {
@@ -9,6 +9,11 @@
   },
   "main": "./dist/utils.cjs.js",
   "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/all-in-js/utils"
+  },
   "dependencies": {
     "@babel/generator": "^7.7.7",
     "@babel/parser": "^7.7.7",

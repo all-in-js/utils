@@ -12,6 +12,10 @@
   "bin": {
     "changelog": "bin/changelog-cli.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/all-in-js/utils"
+  },
   "dependencies": {
     "node-fetch": "^2.6.0",
     "write-pkg": "^4.0.0",

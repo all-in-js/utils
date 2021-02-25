@@ -15,6 +15,10 @@
   "author": "famanoder",
   "license": "MIT",
   "main": "lib/release.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/all-in-js/utils"
+  },
   "dependencies": {
     "node-fetch": "^2.6.0",
     "version-bump-prompt": "5.0.4",

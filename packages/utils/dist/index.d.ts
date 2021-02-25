@@ -1,3 +1,4 @@
+/// <reference types="babel__traverse" />
 /// <reference types="node" />
 import * as c from 'chalk';
 import execa from 'execa';

@@ -21,16 +21,15 @@ var C = require('crypto');
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
 
 function _interopNamespace(e) {
-  if (e && e.__esModule) { return e; } else {
-    var n = Object.create(null);
-    if (e) {
-      Object.keys(e).forEach(function (k) {
-        n[k] = e[k];
-      });
-    }
-    n['default'] = e;
-    return Object.freeze(n);
+  if (e && e.__esModule) return e;
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      n[k] = e[k];
+    });
   }
+  n['default'] = e;
+  return Object.freeze(n);
 }
 
 var c__default = /*#__PURE__*/_interopDefaultLegacy(c);
@@ -50,6 +49,7 @@ var types__default = /*#__PURE__*/_interopDefaultLegacy(types);
 var ora__default = /*#__PURE__*/_interopDefaultLegacy(ora);
 var C__default = /*#__PURE__*/_interopDefaultLegacy(C);
 
+exports.Types = void 0;
 (function (Types) {
     Types["info"] = "info";
     Types["warn"] = "warn";
@@ -91,6 +91,7 @@ const log = {
 // log.done('success...', 'init');
 // log.success('s');
 
+exports.AgrsTypes = void 0;
 (function (AgrsTypes) {
     AgrsTypes["isArray"] = "isArray";
     AgrsTypes["isBoolean"] = "isBoolean";
@@ -118,19 +119,19 @@ function getArgType(agr) {
     const type = Object.prototype.toString.call(agr).split(/\s/)[1].slice(0, -1).toLowerCase();
     const obj = {
         isArray: compareAgrsType(exports.AgrsTypes.isArray, type),
-        isBoolean: compareAgrsType(exports.AgrsTypes.isArray, type),
-        isNumber: compareAgrsType(exports.AgrsTypes.isArray, type),
-        isObject: compareAgrsType(exports.AgrsTypes.isArray, type),
-        isPromise: compareAgrsType(exports.AgrsTypes.isArray, type),
-        isString: compareAgrsType(exports.AgrsTypes.isArray, type),
-        isMap: compareAgrsType(exports.AgrsTypes.isArray, type),
-        isRegExp: compareAgrsType(exports.AgrsTypes.isArray, type),
-        isSet: compareAgrsType(exports.AgrsTypes.isArray, type),
-        isWeakmap: compareAgrsType(exports.AgrsTypes.isArray, type),
-        isWeakset: compareAgrsType(exports.AgrsTypes.isArray, type),
-        isSymbol: compareAgrsType(exports.AgrsTypes.isArray, type),
-        isNull: compareAgrsType(exports.AgrsTypes.isArray, type),
-        isUndefined: compareAgrsType(exports.AgrsTypes.isArray, type),
+        isBoolean: compareAgrsType(exports.AgrsTypes.isBoolean, type),
+        isNumber: compareAgrsType(exports.AgrsTypes.isNumber, type),
+        isObject: compareAgrsType(exports.AgrsTypes.isObject, type),
+        isPromise: compareAgrsType(exports.AgrsTypes.isPromise, type),
+        isString: compareAgrsType(exports.AgrsTypes.isString, type),
+        isMap: compareAgrsType(exports.AgrsTypes.isMap, type),
+        isRegExp: compareAgrsType(exports.AgrsTypes.isRegExp, type),
+        isSet: compareAgrsType(exports.AgrsTypes.isSet, type),
+        isWeakmap: compareAgrsType(exports.AgrsTypes.isWeakmap, type),
+        isWeakset: compareAgrsType(exports.AgrsTypes.isWeakset, type),
+        isSymbol: compareAgrsType(exports.AgrsTypes.isSymbol, type),
+        isNull: compareAgrsType(exports.AgrsTypes.isNull, type),
+        isUndefined: compareAgrsType(exports.AgrsTypes.isUndefined, type),
         isFunction: ['asyncfunction', 'generatorfunction', 'function'].indexOf(type) >= 0
     };
     return obj;
@@ -408,6 +409,7 @@ const npmClient = {
 
 const AGRS_TIP$1 = 'arguments of the command should be an array.';
 const execCmd$1 = createExecCmd('git', AGRS_TIP$1);
+exports.GitConfigLevelType = void 0;
 (function (GitConfigLevelType) {
     GitConfigLevelType["local"] = "local";
     GitConfigLevelType["global"] = "global";

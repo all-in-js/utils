@@ -8,6 +8,10 @@
     "registry": "https://registry.npmjs.org/"
   },
   "author": "famanoder",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/all-in-js/utils"
+  },
   "dependencies": {
     "bfj": "^7.0.2",
     "lodash.clonedeep": "^4.5.0",
