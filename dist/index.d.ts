@@ -1,5 +1,6 @@
 /// <reference types="babel__traverse" />
 /// <reference types="node" />
+
 import * as c from 'chalk';
 import execa from 'execa';
 import * as fetch_2 from 'node-fetch';
@@ -56,6 +57,7 @@ export declare type At = {
     atMobiles: string[];
     isAtAll: boolean;
 };
+
 export { c }
 
 export declare interface CbBabelType {
@@ -65,7 +67,7 @@ export declare interface CbBabelType {
     parse: typeof parse;
 }
 
-export declare const createExecCmd: (type: string, tip: string) => (cmd?: string | undefined) => (agrs?: string[] | undefined) => execa.ExecaSyncReturnValue<string>;
+export declare const createExecCmd: (type: string, tip: string) => (cmd?: string) => (agrs?: string[]) => execa.ExecaSyncReturnValue<string>;
 
 export declare const cwd: string;
 
@@ -85,7 +87,9 @@ export declare type ExecaResType = execa.ExecaSyncReturnValue | execa.ExecaSyncR
 export declare interface ExtraType {
     [key: string]: any;
 }
+
 export { fetch_2 as fetch }
+
 export { fse }
 
 /**

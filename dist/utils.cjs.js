@@ -18,17 +18,17 @@ var types = require('@babel/types');
 var ora = require('ora');
 var C = require('crypto');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e['default'] : e; }
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e["default"] : e; }
 
 function _interopNamespace(e) {
   if (e && e.__esModule) return e;
   var n = Object.create(null);
   if (e) {
-    Object.keys(e).forEach(function (k) {
+    for (var k in e) {
       n[k] = e[k];
-    });
+    }
   }
-  n['default'] = e;
+  n["default"] = e;
   return Object.freeze(n);
 }
 
@@ -149,11 +149,11 @@ function getArgsFromFunc(fn) {
     const FN_ARGS = /^[^\(]*\(\s*([^\)]*)\)/m;
     const STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
     const fnText = fn.toString().replace(STRIP_COMMENTS, '');
-    let args = fnText.match(ARROW_ARG) || fnText.match(FN_ARGS) || [];
-    if (args.length) {
-        args = args[1].split(',').map(arg => arg.toString().trim());
+    const args = fnText.match(ARROW_ARG) || fnText.match(FN_ARGS);
+    if (args) {
+        return args[1].split(',').map(arg => arg.toString().trim());
     }
-    return args;
+    return [];
 }
 /**
  * 对象转map
@@ -350,11 +350,11 @@ function astCtrl(filepath, visitorCreater) {
     };
 }
 
-const AGRS_TIP = 'arguments of the command should be an array.';
-const execCmd = createExecCmd('npm', AGRS_TIP);
+const AGRS_TIP$1 = 'arguments of the command should be an array.';
+const execCmd$1 = createExecCmd('npm', AGRS_TIP$1);
 const npmClient = {
     get version() {
-        const { stdout } = execCmd()(['-v']);
+        const { stdout } = execCmd$1()(['-v']);
         return stdout;
     },
     get config() {
@@ -364,7 +364,7 @@ const npmClient = {
             email: ''
         };
         try {
-            const { stdout } = execCmd('config')(['list', '--json']);
+            const { stdout } = execCmd$1('config')(['list', '--json']);
             conf = JSON.parse(stdout);
         }
         catch (e) {
@@ -379,7 +379,7 @@ const npmClient = {
         return conf;
     },
     setConfig(key, value) {
-        execCmd('config')(['set', `${key}`, `${value}`]);
+        execCmd$1('config')(['set', `${key}`, `${value}`]);
         return this.config;
     },
     addDistTag(pkg, version, tag = 'latest') {
@@ -392,23 +392,23 @@ const npmClient = {
                 if (pkg) {
                     agrs.push(pkg);
                 }
-                const { stdout } = execCmd('dist-tag')(agrs);
+                const { stdout } = execCmd$1('dist-tag')(agrs);
                 return stdout;
             },
             add(pkg, version, tag = 'latest') {
-                const { stdout } = execCmd('dist-tag')(['add', `${pkg}@${version}`, tag]);
+                const { stdout } = execCmd$1('dist-tag')(['add', `${pkg}@${version}`, tag]);
                 return stdout;
             },
             remove(pkg, tag = 'latest') {
-                const { stdout } = execCmd('dist-tag')(['rm', pkg, tag]);
+                const { stdout } = execCmd$1('dist-tag')(['rm', pkg, tag]);
                 return stdout;
             }
         };
     }
 };
 
-const AGRS_TIP$1 = 'arguments of the command should be an array.';
-const execCmd$1 = createExecCmd('git', AGRS_TIP$1);
+const AGRS_TIP = 'arguments of the command should be an array.';
+const execCmd = createExecCmd('git', AGRS_TIP);
 exports.GitConfigLevelType = void 0;
 (function (GitConfigLevelType) {
     GitConfigLevelType["local"] = "local";
@@ -426,22 +426,22 @@ const gitClient = {
         return config;
     },
     init(agrs) {
-        return execCmd$1('init')(agrs);
+        return execCmd('init')(agrs);
     },
     add(agrs) {
         if (!agrs || !agrs.length) {
             agrs = ['.'];
         }
-        execCmd$1('add')(agrs);
+        execCmd('add')(agrs);
         return this;
     },
     commit(msg, agrs = []) {
         const { clean } = this.hasChanges;
         if (clean)
             return this;
-        assertAgrs(!getArgType(agrs).isArray, AGRS_TIP$1);
+        assertAgrs(!getArgType(agrs).isArray, AGRS_TIP);
         if (msg) {
-            execCmd$1('commit')(['-m', msg].concat(agrs));
+            execCmd('commit')(['-m', msg].concat(agrs));
         }
         else {
             assertAgrs(true, 'please commit with some message.');
@@ -452,7 +452,7 @@ const gitClient = {
         return this.add().commit(msg, agrs);
     },
     status(agrs) {
-        const { stdout } = execCmd$1('status')(agrs);
+        const { stdout } = execCmd('status')(agrs);
         return {
             clean: !!!stdout,
             files: stdout
@@ -472,22 +472,22 @@ const gitClient = {
         if (!agrs) {
             agrs = [];
         }
-        assertAgrs(!getArgType(agrs).isArray, AGRS_TIP$1);
+        assertAgrs(!getArgType(agrs).isArray, AGRS_TIP);
         this.checkClean('git fetch');
         const pullAgrs = [this.defaultRemote, this.currentBranch].concat(agrs);
-        execCmd$1('fetch')(pullAgrs);
+        execCmd('fetch')(pullAgrs);
     },
     pull(agrs) {
         if (!agrs) {
             agrs = [];
         }
-        assertAgrs(!getArgType(agrs).isArray, AGRS_TIP$1);
+        assertAgrs(!getArgType(agrs).isArray, AGRS_TIP);
         this.checkClean('git pull');
         const hasRemoteBranch = this.branches.includes(`remotes/${this.remoteAndBranch}`);
         if (hasRemoteBranch) {
             const pullAgrs = [this.defaultRemote, this.currentBranch].concat(agrs);
             try {
-                execCmd$1('pull')(pullAgrs);
+                execCmd('pull')(pullAgrs);
             }
             catch (e) {
                 // conflict
@@ -506,17 +506,17 @@ const gitClient = {
         if (!agrs) {
             agrs = [];
         }
-        assertAgrs(!getArgType(agrs).isArray, AGRS_TIP$1);
+        assertAgrs(!getArgType(agrs).isArray, AGRS_TIP);
         this.checkClean('git push');
         const pushAgrs = [remote || this.defaultRemote, branch || this.currentBranch];
-        execCmd$1('push')(pushAgrs.concat(agrs));
+        execCmd('push')(pushAgrs.concat(agrs));
     },
     log(agrs) {
-        const { stdout } = execCmd$1('log')(agrs);
+        const { stdout } = execCmd('log')(agrs);
         return stdout;
     },
     merge(agrs) {
-        execCmd$1('merge')(agrs);
+        execCmd('merge')(agrs);
     },
     get branch() {
         return {
@@ -530,16 +530,16 @@ const gitClient = {
                 if (base) {
                     agrs.push(base);
                 }
-                execCmd$1('checkout')(agrs);
+                execCmd('checkout')(agrs);
             },
             switch: (name) => {
-                execCmd$1('checkout')([name]);
+                execCmd('checkout')([name]);
             },
             removeLocal: (name) => {
-                execCmd$1('branch')(['-D', name]);
+                execCmd('branch')(['-D', name]);
             },
             removeRemote: (name) => {
-                execCmd$1('push')([this.defaultRemote, '-d', name]);
+                execCmd('push')([this.defaultRemote, '-d', name]);
             }
         };
     },
@@ -549,11 +549,11 @@ const gitClient = {
     },
     get behindAndAhead() {
         this.remote.update(this.defaultRemote);
-        const { stdout } = execCmd$1('rev-list')(["--left-right", "--count", `${this.remoteAndBranch}...${this.currentBranch}`]);
+        const { stdout } = execCmd('rev-list')(["--left-right", "--count", `${this.remoteAndBranch}...${this.currentBranch}`]);
         return stdout.split("\t").map(val => parseInt(val, 10));
     },
     get remote() {
-        const remoteCtrl = execCmd$1('remote');
+        const remoteCtrl = execCmd('remote');
         const $this = this;
         return {
             update: (name) => remoteCtrl(['update'].concat(name || [])),
@@ -571,7 +571,7 @@ const gitClient = {
         this.tag.add(name).push(name.name || name);
     },
     get tag() {
-        const tagCtrl = execCmd$1('tag');
+        const tagCtrl = execCmd('tag');
         const gitTag = {
             get list() {
                 let list = [];
@@ -616,20 +616,20 @@ const gitClient = {
                 return gitTag;
             },
             show(name) {
-                const { stdout, failed } = execCmd$1('show')([name]);
+                const { stdout, failed } = execCmd('show')([name]);
                 if (!failed) {
                     return stdout;
                 }
                 return '';
             },
             push: (name) => {
-                execCmd$1('push')([this.defaultRemote, name]);
+                execCmd('push')([this.defaultRemote, name]);
             }
         };
         return gitTag;
     },
     get branches() {
-        const { stdout } = execCmd$1('branch')(['-a']);
+        const { stdout } = execCmd('branch')(['-a']);
         return splitOut(stdout).map(str => str.trim());
     },
     get mayHaveConflict() {
@@ -651,7 +651,7 @@ const gitClient = {
         return splitOut(this.log([this.remoteAndBranch, '--pretty=format:%h']))[0];
     },
     get remotes() {
-        return splitOut(execCmd$1('remote')(['-v']).stdout)
+        return splitOut(execCmd('remote')(['-v']).stdout)
             .filter(item => item.endsWith('(fetch)'))
             .map(item => {
             const values = item.split('\t');
@@ -668,7 +668,7 @@ const gitClient = {
         return defaultRemote;
     },
     get currentBranch() {
-        const { stdout: branch } = execCmd$1('symbolic-ref')(['--short', 'HEAD']);
+        const { stdout: branch } = execCmd('symbolic-ref')(['--short', 'HEAD']);
         return branch;
     }
 };
@@ -685,16 +685,16 @@ const gitClient = {
 function configCtrl(level) {
     return {
         add(key, value) {
-            return execCmd$1('config')([`--${level}`, key, value]);
+            return execCmd('config')([`--${level}`, key, value]);
         },
         get(key) {
-            return execCmd$1('config')([`--${level}`, key]);
+            return execCmd('config')([`--${level}`, key]);
         },
         remove(key) {
-            return execCmd$1('config')([`--${level}`, '--unset', key]);
+            return execCmd('config')([`--${level}`, '--unset', key]);
         },
         get list() {
-            const { stdout, failed } = execCmd$1('config')([`--${level}`, '-l']);
+            const { stdout, failed } = execCmd('config')([`--${level}`, '-l']);
             if (!failed) {
                 return splitOut(stdout);
             }
@@ -717,6 +717,7 @@ function splitOut(stdout = '') {
 // 不能和同步的child_process方法一起使用
 // 使用promise的execa和await
 class Spinner {
+    _spinner;
     constructor(options) {
         this._spinner = ora__default(options).start();
     }
@@ -739,6 +740,9 @@ class Spinner {
 }
 
 class DDWebhook {
+    secret;
+    webhook;
+    timestamp;
     constructor(option) {
         const { secret, webhook } = option;
         if (!secret || !webhook) {

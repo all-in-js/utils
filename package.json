@@ -1,21 +1,27 @@
 {
-  "name": "famanoder",
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "name": "@all-in-js/utils",
+  "version": "1.1.0",
+  "author": "famanoder",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "./dist/utils.cjs.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/all-in-js/utils"
+  },
   "scripts": {
-    "build": "node ./scripts/build.js --pkgs utils"
+    "build": "node ./scripts/build.js"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.9.15",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
-    "chalk": "^4.1.0",
-    "execa": "^4.0.3",
-    "fs-extra": "^9.0.1",
-    "lerna": "^3.18.4",
     "rollup": "^2.27.1",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0",
@@ -23,7 +29,25 @@
     "typescript": "^4.0.2",
     "yargs-parser": "^20.0.0"
   },
-  "npmClient": "yarn",
-  "useWorkspaces": true,
-  "dependencies": {}
+  "dependencies": {
+    "@babel/generator": "^7.7.7",
+    "@babel/parser": "^7.7.7",
+    "@babel/traverse": "^7.7.4",
+    "@babel/types": "^7.7.4",
+    "@types/babel__generator": "^7.6.1",
+    "@types/babel__traverse": "^7.0.14",
+    "@types/chalk": "^2.2.0",
+    "@types/fs-extra": "^9.0.1",
+    "@types/node": "^14.10.1",
+    "@types/node-fetch": "^2.5.7",
+    "@types/normalize-path": "^3.0.0",
+    "archiver": "^3.1.1",
+    "chalk": "^3.0.0",
+    "execa": "^3.4.0",
+    "fs-extra": "^8.1.0",
+    "node-fetch": "^2.6.0",
+    "normalize-path": "^3.0.0",
+    "ora": "^4.0.2",
+    "portfinder": "^1.0.25"
+  }
 }

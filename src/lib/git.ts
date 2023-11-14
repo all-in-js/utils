@@ -153,7 +153,7 @@ export const gitClient: GitClientType = {
       const pullAgrs: string[] = [this.defaultRemote, this.currentBranch].concat(agrs);
       try {
         execCmd('pull')(pullAgrs);
-      } catch(e) {
+      } catch(e: any) {
         // conflict
         console.log(e.message);
         process.exit(0);

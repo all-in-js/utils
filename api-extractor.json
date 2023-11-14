@@ -2,7 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
 
   "dtsRollup": {
-    "enabled": true
+    "enabled": true,
+    "untrimmedFilePath": "./dist/index.d.ts"
   },
 
   "docModel": {
@@ -38,5 +39,7 @@
         "logLevel": "none"
       }
     }
-  }
+  },
+
+  "mainEntryPointFilePath": "./dist/src/index.d.ts"
 }

@@ -94,11 +94,13 @@ export function getArgsFromFunc(fn: Function): string[] {
   const FN_ARGS = /^[^\(]*\(\s*([^\)]*)\)/m; 
   const STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg; 
   const fnText = fn.toString().replace(STRIP_COMMENTS, '');
-  let args = fnText.match(ARROW_ARG) || fnText.match(FN_ARGS) || []; 
-  if(args.length) {  
-    args = args[1].split(',').map(arg => arg.toString().trim());
+  const args = fnText.match(ARROW_ARG) || fnText.match(FN_ARGS); 
+  
+  if (args) {  
+    return args[1].split(',').map(arg => arg.toString().trim());
   }
-  return args; 
+
+  return []; 
 }
 
 /**
