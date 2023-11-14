@@ -220,19 +220,19 @@ const resolve = normalizePathFn('resolve');
 const join = normalizePathFn('join');
 function resolveCWD(...target) {
     target.unshift(cwd);
-    return _util.resolve(target);
+    return _util.resolve(...target);
 }
 function resolveHome(...target) {
     target.unshift(getHomedir());
-    return _util.resolve(target);
+    return _util.resolve(...target);
 }
 function joinCWD(...target) {
     target.unshift(cwd);
-    return _util.join(target);
+    return _util.join(...target);
 }
 function joinHome(...target) {
     target.unshift(getHomedir());
-    return _util.join(target);
+    return _util.join(...target);
 }
 /**
  * 获取不同平台的home目录

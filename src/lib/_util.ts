@@ -173,19 +173,19 @@ export const resolve = normalizePathFn('resolve');
 export const join = normalizePathFn('join');
 export function resolveCWD(...target: string[]): string {
   target.unshift(cwd);
-  return _util.resolve(target);
+  return _util.resolve(...target);
 }
 export function resolveHome(...target: string[]): string {
   target.unshift(getHomedir());
-  return _util.resolve(target);
+  return _util.resolve(...target);
 }
 export function joinCWD(...target: string[]): string {
   target.unshift(cwd);
-  return _util.join(target);
+  return _util.join(...target);
 }
 export function joinHome(...target: string[]): string {
   target.unshift(getHomedir());
-  return _util.join(target);
+  return _util.join(...target);
 }
 
 /**
