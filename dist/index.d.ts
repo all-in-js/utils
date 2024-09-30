@@ -1,7 +1,7 @@
 /// <reference types="babel__traverse" />
 /// <reference types="node" />
 
-import * as c from 'chalk';
+import { default as c } from 'chalk';
 import execa from 'execa';
 import * as fetch_2 from 'node-fetch';
 import * as fse from 'fs-extra';

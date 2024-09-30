@@ -33,7 +33,6 @@ function _interopNamespace(e) {
 }
 
 var c__default = /*#__PURE__*/_interopDefaultLegacy(c);
-var c__namespace = /*#__PURE__*/_interopNamespace(c);
 var fse__default = /*#__PURE__*/_interopDefaultLegacy(fse);
 var fse__namespace = /*#__PURE__*/_interopNamespace(fse);
 var fetch__default = /*#__PURE__*/_interopDefaultLegacy(fetch);
@@ -786,7 +785,7 @@ class DDWebhook {
 // .then(console.log)
 // .catch(console.log);
 
-exports.c = c__namespace;
+exports.c = c__default;
 exports.fse = fse__namespace;
 exports.fetch = fetch__namespace;
 exports.DDWebhook = DDWebhook;

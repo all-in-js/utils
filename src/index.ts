@@ -1,5 +1,5 @@
 
-import * as c from 'chalk';
+import { default as c } from 'chalk';
 import * as fse from 'fs-extra';
 import * as fetch from 'node-fetch';
 
